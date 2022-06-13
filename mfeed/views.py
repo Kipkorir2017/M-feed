@@ -27,7 +27,7 @@ class ProfileList(APIView):
 #         serializer_class=ProfileSerializer
 #         permission_classes = (IsAuthenticatedOrReadOnly,)
 
-class SurveyList(viewsets.ModelViewSet):
+class SurveyList(APIView):
         queryset=Survey.objects.all()
         serializer_class=SurveySerializer
     
