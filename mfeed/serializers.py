@@ -1,3 +1,4 @@
+from pyexpat import model
 from .models import User,Profile,Survey,Reports
 from rest_framework import serializers
 
@@ -14,4 +15,10 @@ class ProfileSerializer(serializers.ModelSerializer):
 
 class SurveySerializer(serializers.ModelSerializer):
     class Meta:
+        model=Survey
+        fields="__all__"
+
+class ReportsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Reports
         fields="__all__"
