@@ -30,6 +30,13 @@ class ProfileList(APIView):
 class SurveyList(APIView):
         queryset=Survey.objects.all()
         serializer_class=SurveySerializer
+
+        def post(self, request, format=None):
+            serializers = SurveySerializer(data=request.data)
+            if serializers.is_valid():
+                serializers.save()
+                return Response(serializers.data, status=status.HTTP_201_CREATED)
+            return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
     
     
 class ReportsList(viewsets.ModelViewSet):
