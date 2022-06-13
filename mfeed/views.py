@@ -11,14 +11,21 @@ import json
 from django.core import serializers
 from .models import User,Survey,Reports,Profile
 from .serializers import  ProfileSerializer,SurveySerializer,ReportsSerializer,UsersSerializer
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 
-class ProfileList(viewsets.ModelViewSet):
-        queryset=Profile.objects.all()
-        serializer_class=ProfileSerializer
-        filter_backends = [filters.SearchFilter]
-        search_fields = ['user__username',]
-        permission_classes = (IsAuthenticatedOrReadOnly,)
+class ProfileList(APIView):
+    def get(self, request, format=None):
+        profile_all = Profile.objects.all()
+        serializers = ProfileSerializer(profile_all, many=True)
+        return Response(serializers.data)
+
+
+# class ProfileList(viewsets.ModelViewSet):
+#         queryset=Profile.objects.all()
+#         serializer_class=ProfileSerializer
+#         permission_classes = (IsAuthenticatedOrReadOnly,)
 
 class SurveyList(viewsets.ModelViewSet):
         queryset=Survey.objects.all()
