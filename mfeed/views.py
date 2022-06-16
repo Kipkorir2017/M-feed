@@ -6,7 +6,14 @@ from rest_framework.exceptions import AuthenticationFailed
 from rest_framework.permissions import IsAuthenticated
 import jwt
 import datetime
-
+from django.utils import Util
+from django.contrib.auth.tokens import PasswordResetTokenGenerator 
+from django.utils.encoding import smart_str,force_str,smart_bytes,DjangoUnicodeDecodeError
+from django.utils.http import urlsafe_base64_encode,urlsafe_base64_decode
+from django.contrib.sites.shortcuts import get_current_site
+from django.urls import reverse 
+from django.shortcuts import redirect
+from django.http import HttpResponsePermanentRedirect
 
 # from decouple import config
 from django.core import serializers
