@@ -6,7 +6,8 @@ from django.contrib.auth.models import User
 # class models
 class Profile(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
-    name = models.CharField(max_length=200)   
+    name = models.CharField(max_length=200) 
+      
     def __str__(self):
         return self.name
   
@@ -15,7 +16,8 @@ class Profile(models.Model):
     
     def delete_profile(self):
         self.delete()
-
+    def update_profile(cls, id):
+        Profile.objects.get(user_id=id)
 
 class Survey(models.Model):
     name=models.CharField(max_length=200)
