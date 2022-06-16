@@ -2,7 +2,7 @@ from django.urls import path,include
 from .views import RegisterView, LoginView, UserView, LogoutView
 from . import views
 from rest_framework import routers
-
+from .views import ChangePasswordView
 
 
 router=routers.DefaultRouter()
@@ -20,5 +20,6 @@ urlpatterns = [
     path('user/', UserView.as_view()),
     path('logout/', LogoutView.as_view()),
     path('password-reset-complete', views.SetNewPasswordAPIView.as_view(),name='password-reset-complete')
+    path('api/change-password/', ChangePasswordView.as_view(), name='change-password'),
     
 ]
