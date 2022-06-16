@@ -1,21 +1,13 @@
 from django.db import models
-# from django.contrib.auth.models import AbstractUser
-# from cloudinary.models import CloudinaryField
-# Create your models here.
 from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.install python3-djangoinstall python3-django
-# class User(AbstractUser):
-#     name = models.CharField(max_length=255)
-#     email = models.CharField(max_length=255, unique=True)
-#     organisation_name=models.CharField(max_length=255)
-#     password = models.CharField(max_length=255)
 
-    
+# class models
 class Profile(models.Model):
-    name = models.CharField(max_length=200)
-
-    
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+    name = models.CharField(max_length=200) 
+      
     def __str__(self):
         return self.name
   
@@ -24,6 +16,8 @@ class Profile(models.Model):
     
     def delete_profile(self):
         self.delete()
+    def update_profile(cls, id):
+        Profile.objects.get(user_id=id)
 
 class Survey(models.Model):
     name=models.CharField(max_length=200)
@@ -49,6 +43,7 @@ class Survey(models.Model):
 class Reports(models.Model):
     type = models.CharField(max_length=200)
     survey=models.ForeignKey(Survey,on_delete=models.CASCADE,null=True)
+    survey_name=models.CharField(max_length=200)
 
     def __str__(self):
         return self.name
