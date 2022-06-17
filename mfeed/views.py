@@ -48,6 +48,15 @@ class ReportsList(viewsets.ModelViewSet):
     serializer_class = ReportsSerializer
 
 
+def pie_chart(request):
+    labels = []
+    data = []
+
+    queryset = Survey.objects.order_by('-Surveyresults')
+    for survey in queryset:
+        labels.append(survey.name)
+        data.append(survey.resp)
+
 class RegisterView(APIView):
     def post(self, request):
         serializer = UsersSerializer(data=request.data)
