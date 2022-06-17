@@ -14,6 +14,9 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse 
 from django.shortcuts import redirect
 from django.http import HttpResponsePermanentRedirect
+import os
+from django.conf import settings
+from django.http import HttpResponse, Http404
 
 # from decouple import config
 from django.core import serializers
@@ -56,6 +59,17 @@ def pie_chart(request):
     for survey in queryset:
         labels.append(survey.name)
         data.append(survey.resp)
+
+
+def download(request, path):
+    obj = Reports.objects.get(id=id)
+    file_path = os.path.join(settings.MEDIA_ROOT, path)
+    if os.path.exists(file_path):
+        with open(file_path, 'rb') as fh:
+            response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
+            response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
+            return response
+    raise Http404
 
 class RegisterView(APIView):
     def post(self, request):
