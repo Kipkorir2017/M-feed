@@ -1,27 +1,27 @@
 # M-feed
-### Application description
-    enable organizations and institutions to adopt data driven decision making in identifying gaps and areas of need in curriculum development and implementation.
-.
+## Application description
+    enable organizations and institutions to adopt data driven 
+    decision making in identifying gaps and areas of need in 
+    curriculum development and implementation.
+    * admin does the management.
 
-    admin does the management.
-
-### Setup process
+## Setup process
 * Clone this repository using the link from the clone button
 * Open the downloaded folder in a text editor of your preference
-### To install virtual environment:
+## To install virtual environment:
 * python3.10 -m venv --without-pip virtual
-### Activate virtual environment
+## Activate virtual environment
 * source virtual/bin/activate
-### Install latest pip version inside virtual environment
+## Install latest pip version inside virtual environment
 * curl https://bootstrap.pypa.io/get-pip.py | python
 ### Installing the dependencies
 * pip install -r requirements.txt
-### Starting up the application
+## Starting up the application
 * python3 manage.py runserver
 
-Navigation
-* Open port *http://127.0.0.1:8000/ * to interact with the application
-* The api endpoints:*http://127.0.0.1:8000/api *
+## Navigation
+* Open port *http://127.0.0.1:8000/ to interact with the application
+* The api endpoints:http://127.0.0.1:8000/api *
 * Swagger:*http://127.0.0.1:8000/swagger *
 ### Technologies Used
 1. PYTHON
