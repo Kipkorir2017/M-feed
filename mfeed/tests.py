@@ -6,8 +6,8 @@ class ProfileTestCase(TestCase):
     def setUp(self):
         self.user = User(username='Benjamin')
         self.user.save()
-        self.initiative=Survey(Survey= self.user,name='moringa alumni ',organisation='Moringa',resp="20",quantity=50000.00, date="2021-12-12",action="done")
-        self.initiative.save_survey()
+        self.survey=Survey(Survey= self.user,name='moringa alumni ',organisation='Moringa',resp="20",quantity=50000.00, date="2022-06-16",action="done")
+        self.survey.save_survey()
         
     def test_instance(self):
         self.assertTrue(isinstance(self.profile, Profile))
