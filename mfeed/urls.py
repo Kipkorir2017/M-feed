@@ -16,6 +16,7 @@ router.register('report',views.ReportList )
 urlpatterns = [
     path('api/',include(router.urls)),
     path('pie-chart/', views.pie_chart, name='pie-chart'),
+    path('download/',views.download,name='downloads'),
     path('register/', RegisterView.as_view()),
     path('login/', LoginView.as_view()),
     path('user/', UserView.as_view()),
