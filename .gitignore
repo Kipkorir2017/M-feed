@@ -1,3 +1,6 @@
 venv/
 db.sqlite3
 *.pyc
+.env
+.vscode
+notes.txt
