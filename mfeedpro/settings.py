@@ -197,6 +197,7 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 
+
 # Store this in the env file when deploying
 cloudinary.config( 
   cloud_name = "kenya12254", 
