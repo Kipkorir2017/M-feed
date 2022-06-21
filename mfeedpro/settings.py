@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     'mfeed',
     'cloudinary',
     'rest_framework',
-    'corsheaders'
+    'corsheaders',
 
 ]
 
