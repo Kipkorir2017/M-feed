@@ -18,9 +18,8 @@ SECRET_KEY=config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 
 # Application definition
@@ -36,6 +35,9 @@ INSTALLED_APPS = [
     'cloudinary',
     'rest_framework',
     'corsheaders',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'drf_yasg',
 
 ]
 
@@ -73,7 +75,6 @@ WSGI_APPLICATION = 'mfeedpro.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
 # DATABASES = {
 #     'default': {
 #         'ENGINE':'django.db.backends.postgresql',
@@ -94,6 +95,7 @@ if config('MODE')=="dev":
             'PORT': ''
         }
     }
+
 else:
    DATABASES = {
        'default': dj_database_url.config(
@@ -105,7 +107,6 @@ db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -205,6 +206,23 @@ cloudinary.config(
   api_secret = "FLfqPbw73_Nj6vSCFhMXMtbyhiY" 
 )
 
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+
+# Simplified static file serving.
+# https://warehouse.python.org/project/whitenoise/
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# configuring the location for media
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Configure Django App for Heroku.
+django_heroku.settings(locals())
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 

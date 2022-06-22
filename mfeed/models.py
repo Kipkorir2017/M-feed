@@ -138,4 +138,3 @@ class Comments(models.Model):
     comment = models.TextField()
     profile = models.ForeignKey(Profile,on_delete=models.CASCADE)
     posted_on = models.DateTimeField(auto_now_add=True)
-
